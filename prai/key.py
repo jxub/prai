@@ -1,4 +1,4 @@
-from base import _call
+from .base import _call
 
 
 def deterministic_key(seed, index):
@@ -10,6 +10,10 @@ def deterministic_key(seed, index):
     :param index: number of permutations (check)
     :type index: int
     """
+
+    action = 'deterministic_key'
+
+    return _call(action, seed=seed, index=index)
 
 
 def create_key():
