@@ -24,17 +24,6 @@ class Account(Resource):
 
         return self.__send(action, account=self.id)
 
-    def get_info(self, representative=None, weight=None, pending=None):
-        # Returns frontier, open block, change representative block, balance,
-        # last modified timestamp from local database & block count for account
-        # Additionally returns representative, voting weight, pending balance for account
-        # if any of this params is set to true
-        action = "account_info"
-
-        return self.__send(action, account=self.id,
-                           representative=representative,
-                           weight=weight, pending=pending)
-
     def create(self, work=True):
         # Creates a new account, insert next deterministic key in wallet
         # Disables work generation after creating account if work is set to False
@@ -48,12 +37,23 @@ class Account(Resource):
         action = "account_get"
 
         return self.__send(action, key=key)
-    
-    def history(self, count=1):
+
+    def get_history(self, count=1):
         # Reports send/receive information for a account
         action = "account_history"
 
         return self.__send(action, account=self.id, count=count)
+
+    def get_info(self, representative=None, weight=None, pending=None):
+        # Returns frontier, open block, change representative block, balance,
+        # last modified timestamp from local database & block count for account
+        # Additionally returns representative, voting weight, pending balance for account
+        # if any of this params is set to true
+        action = "account_info"
+
+        return self.__send(action, account=self.id,
+                           representative=representative,
+                           weight=weight, pending=pending)
 
     def get_public_key(self):
         # Get the public key for account
@@ -66,6 +66,19 @@ class Account(Resource):
         action = "account_representative"
 
         return self.__send(action, account)
+
+    def set_representative(self):
+        # Sets the representative for account in wallet
+        action = "account_representative_set"
+
+        return self.__send(action, wallet=self.wallet,
+                           account=self.id, representative=representative)
+        
+    def get_weight(self):
+        # Returns the voting weight for account
+        action = "account_weight"
+
+        return self.__send(action, account=self.id)
 
     """
     better inside wallet

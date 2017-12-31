@@ -3,7 +3,7 @@ class Resource:
     
     def __send(action, wallet=None, key=None, count=None, account=None, accounts=None, 
                representative=None, block=None, source=None, destination=None, amount=None,
-               threshold=None,
+               threshold=None, _hash=None,
                weight=None, pending=None):
         """
         :param action: mandatory param of action type
@@ -17,6 +17,8 @@ class Resource:
         :param representative: return representative for the account if set to "true",
         also used to set representative if is an address
         :type representative: bool or str
+        :param hash: base64 hash of the block
+        :type hash: str
         :param pending: return voting weight if set to "true"
         :type weight: bool
         :param pending: return pending balance for account if set to "true"
@@ -45,6 +47,9 @@ class Resource:
             payload.append('''"amount": "{}"'''.format(amount))
         if threshold:
             payload.append('''"threshold": "{}"'''.format(threshold))
+        if _hash:
+            # TODO validate hash len is 64
+            payload.append('''"hash": "{}"'''.format(_hash))
         if not work:
             payload.append('''"work": "false"''')
         if representative:
@@ -64,3 +69,8 @@ class Resource:
             return None
         resp_dict = json.loads(response.text)
         return resp_dict
+
+
+def _call(action, account):
+    # TODO call api without subclassing Resource for things like delegators, frontiers etc.
+    pass
