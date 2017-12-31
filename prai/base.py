@@ -71,6 +71,6 @@ class Resource:
         return resp_dict
 
 
-def _call(action, account):
+def _call(action, **kwargs):
     # TODO call api without subclassing Resource for things like delegators, frontiers etc.
-    pass
+    return Resource.__send(action, **kwargs)

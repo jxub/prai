@@ -1,0 +1,7 @@
+__title__ = 'prai'
+__description__ = 'Raiblocks Python RPC client'
+__version__ = '0.0.1'
+__author__ = 'Jakub Janarel'
+__author_email__ = 'jjanarek@gmail.com'
+__license__ = 'MIT License'
+__copyright__ = 'Copyright 2018 Jakub Janarek'
