@@ -1,11 +1,14 @@
-# prai :pray:
+prai :pray:
+===========
 Raiblocks Python RPC client
 
-### Some notes
+Some notes
+----------
 
-This is work in progress, so stay tuned for updates :see_no_evil:
+This is work in progress, so expect some rough edges and stay tuned for updates :see_no_evil:
 
-### Roadmap
+Roadmap
+-------
 
 - Finish basic API
 - Add some higher-level features, for example a simple e-commerce payment API
