@@ -40,3 +40,7 @@ def republish(_hash):
     :returns: dict with `blocks` key and a list of blocks as value
     :rtype: dict
     """
+
+    action = 'republish'
+
+    return _call(action, _hash=_hash)
