@@ -1,4 +1,4 @@
-from base import _call
+from .base import _call
 
 
 def get_ledger(account, count=1, representative=False, weight=False,

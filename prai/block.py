@@ -1,4 +1,4 @@
-from base import Resource
+from .base import Resource
 
 class Block(Resource):
     def __init__(self, _hash):

@@ -1,4 +1,4 @@
-from base import _call
+from .base import _call
 
 
 def get_frontiers(account):

@@ -2,7 +2,7 @@
 
 import json
 import requests
-from base import Resource
+from .base import Resource
 
 __author__ = 'jxub'
 
