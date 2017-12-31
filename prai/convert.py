@@ -2,6 +2,7 @@
 
 __author__ = 'jxub'
 
+
 RAI_RATIO  = 10 ** 24  # amount of raw in rai
 KRAI_RATIO = 10 ** 27  # amount of raw in krai
 MRAI_RATIO = 10 ** 30  # amount of raw in mrai
@@ -18,6 +19,7 @@ def __answer(self, amount):
     :rtype: str
     """
     return '''{ "amount": "{}" }'''.format(str(amount))
+
 
 def mrai_from_raw(self, raw):
     """
