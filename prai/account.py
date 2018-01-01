@@ -1,7 +1,15 @@
-    
+from .base import Resource
+
+
 class Account(Resource):
     
     def __init__(self, wallet, key=None):
+        """
+        :param wallet: the id of the wallet that owns the account
+        :type wallet: str
+        :param key: (optional) key of the account
+        :type key: str
+        """
         # id of the wallet that owns account
         self.wallet = wallet
 
@@ -13,42 +21,56 @@ class Account(Resource):
             self.id = self.create()["account"]
 
     def get_balance(self):
-        # Returns how many RAW is owned and how many have not yet been received by account
+        """
+        Returns how many RAW is owned and how many have not yet been received by account.
+        """
         action = "account_balance"
 
         return self.__send(action, account=self.id)
 
     def get_block_count(self):
-        # Get number of blocks for a specific account
+        """
+        Get number of blocks for a specific account.
+        """
         action = "account_block_count"
 
         return self.__send(action, account=self.id)
 
     def create(self, work=True):
-        # Creates a new account, insert next deterministic key in wallet
-        # Disables work generation after creating account if work is set to False
+        """
+        Creates a new account, insert next deterministic key in wallet.
+        Disables work generation after creating account if work is set to False.
 
+        :param work: (optional) disable work generation
+        :type work: bool
+        """
         action = "account_create"
 
         return self.__send(action, wallet=self.wallet, work=work)
 
     def get(self, key):
-        # Get account number for the public key
+        """
+        Get account number for the public key.
+        """
         action = "account_get"
 
         return self.__send(action, key=key)
 
     def get_history(self, count=1):
-        # Reports send/receive information for a account
+        """
+        Reports send/receive information for a account.
+        """
         action = "account_history"
 
         return self.__send(action, account=self.id, count=count)
 
     def get_info(self, representative=None, weight=None, pending=None):
-        # Returns frontier, open block, change representative block, balance,
-        # last modified timestamp from local database & block count for account
-        # Additionally returns representative, voting weight, pending balance for account
-        # if any of this params is set to true
+        """
+        Returns frontier, open block, change representative block, balance,
+        last modified timestamp from local database & block count for account.
+        Additionally returns representative, voting weight, pending balance for account
+        if any of this params is set to true.
+        """
         action = "account_info"
 
         return self.__send(action, account=self.id,
@@ -56,26 +78,34 @@ class Account(Resource):
                            weight=weight, pending=pending)
 
     def get_public_key(self):
-        # Get the public key for account
+        """
+        Get the public key for account
+        """
         action = "account_key"
 
         return self.__send(action, account=self.id)
 
     def get_representative(self):
-        # Returns the representative for account
+        """
+        Returns the representative for account
+        """
         action = "account_representative"
 
         return self.__send(action, account)
 
     def set_representative(self):
-        # Sets the representative for account in wallet
+        """
+        Sets the representative for account in wallet
+        """
         action = "account_representative_set"
 
         return self.__send(action, wallet=self.wallet,
                            account=self.id, representative=representative)
         
     def get_weight(self):
-        # Returns the voting weight for account
+        """
+        Returns the voting weight for account
+        """
         action = "account_weight"
 
         return self.__send(action, account=self.id)

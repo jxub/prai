@@ -2,6 +2,14 @@ prai :pray:
 ===========
 Raiblocks Python RPC client
 
+Install
+-------
+A somewhat stable version from pypi::
+    $ pip install prai
+
+Or the most recent master version from Github::
+    $ git clone https://github.com/jxub/prai
+
 Some notes
 ----------
 

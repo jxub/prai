@@ -1,28 +1,32 @@
 
 class Resource:
-    
-    def __send(action, wallet=None, key=None, count=None, account=None, accounts=None, 
+
+    def __init__(self, node_uri):
+        self.node_uri = node_uri
+
+    def __send(action, wallet=None, key=None, count=None, account=None, accounts=None,
                representative=None, block=None, source=None, destination=None, amount=None,
-               threshold=None, _hash=None,
-               weight=None, pending=None):
+               threshold=None, _hash=None, weight=None, pending=None):
         """
         :param action: mandatory param of action type
         :type action: str
-        :param count:
+        :param count: (optional)
         :type count: int
-        :param accounts: list of account address strings to be moved
+        :param accounts: (optional) list of account address strings to be moved
         :type accounts: list
-        :param work: optionally disable work generation after account creation
+        :param work: (optional) disable work generation after account creation
         :type work: bool
-        :param representative: return representative for the account if set to "true",
-        also used to set representative if is an address
+        :param representative: (optional) return representative for the account if set to "true",
+            also used to set representative if is an address
         :type representative: bool or str
-        :param hash: base64 hash of the block
+        :param hash: (optional) base64 hash of the block
         :type hash: str
-        :param pending: return voting weight if set to "true"
+        :param pending: (optional) return voting weight if set to "true"
         :type weight: bool
-        :param pending: return pending balance for account if set to "true"
+        :param pending: (optional) return pending balance for account if set to "true"
         :type pending: bool
+
+        # TODO: return a RaiResponse object instead of json
         """
 
         payload = []
@@ -64,6 +68,15 @@ class Resource:
 
         data = "\{{}\}".format(', '.join(payload))
 
+
+
+    def __get_dict(self, data):
+        """
+        :param data: data to post and parse
+        :type data: str
+        :returns: response dict
+        :rtype: str
+        """
         response = requests.post(self.node_uri, data=data)
         if not response.ok:
             return None

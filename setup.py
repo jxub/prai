@@ -12,15 +12,15 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'mypackage'
-DESCRIPTION = 'My short description for my project.'
-URL = 'https://github.com/me/myproject'
-EMAIL = 'me@example.com'
-AUTHOR = 'Awesome Soul'
+NAME = 'prai'
+DESCRIPTION = 'Raiblocks Python RPC client'
+URL = 'https://github.com/jxub/prai'
+EMAIL = 'jjanarek@gmail.com'
+AUTHOR = 'Jakub Janarek'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    # 'requests', 'maya', 'records',
+    'requests',
 ]
 
 # The rest you shouldn't have to touch too much :)
@@ -76,14 +76,14 @@ class UploadCommand(Command):
 
 # Where the magic happens:
 setup(
-    name=prai,
+    name=NAME,
     version=about['__version__'],
     description=DESCRIPTION,
     long_description=long_description,
     author=AUTHOR,
     author_email=EMAIL,
     url=URL,
-    py_modules=['prai''],
+    py_modules=['prai'],
 
     # entry_points={
     #     'console_scripts': ['mycli=mymodule:cli'],
@@ -104,7 +104,9 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
-        'Programming Language :: Python :: Implementation :: PyPy'
+        'Programming Language :: Python :: Implementation :: PyPy',
+        'Topic :: Software Development :: Libraries',
+        'Development Status :: 3 - Alpha'
     ],
     # $ setup.py publish support.
     cmdclass={
