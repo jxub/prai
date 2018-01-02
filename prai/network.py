@@ -1,4 +1,4 @@
-from .base import _call
+from .base import call
 
 
 def get_available_supply():
@@ -11,7 +11,7 @@ def get_available_supply():
 
     action = 'available_supply'
 
-    return _call(action)
+    return call(action)
 
 
 def send_keepalive(address, port):
@@ -28,7 +28,7 @@ def send_keepalive(address, port):
 
     action = 'keepalive'
 
-    return _call(action, address=address, port=port)
+    return call(action, address=address, port=port)
 
 
 def republish(_hash):
@@ -43,4 +43,4 @@ def republish(_hash):
 
     action = 'republish'
 
-    return _call(action, _hash=_hash)
+    return call(action, _hash=_hash)

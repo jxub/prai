@@ -1,4 +1,4 @@
-from .base import _call
+from .base import call
 
 
 def get_node_versions():
@@ -11,7 +11,7 @@ def get_node_versions():
 
     action = 'version'
 
-    return _call(action)
+    return call(action)
 
 
 def stop_node():
@@ -24,4 +24,4 @@ def stop_node():
 
     action = 'stop'
 
-    return _call(action)
+    return call(action)

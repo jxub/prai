@@ -1,4 +1,4 @@
-from .base import _call
+from .base import call
 
 
 def get_frontiers(account):
@@ -14,7 +14,7 @@ def get_frontiers(account):
 
     action = "frontiers"
     
-    return _call(action, account=account)
+    return call(action, account=account)
 
 
 def get_frontier_count(account):
@@ -29,4 +29,4 @@ def get_frontier_count(account):
 
     action = "frontier_count"
 
-    return _call(action, account=account)
+    return call(action, account=account)

@@ -1,4 +1,4 @@
-from .base import _call
+from .base import call
 
 
 def deterministic_key(seed, index):
@@ -13,7 +13,7 @@ def deterministic_key(seed, index):
 
     action = 'deterministic_key'
 
-    return _call(action, seed=seed, index=index)
+    return call(action, seed=seed, index=index)
 
 
 def create_key():
@@ -26,7 +26,7 @@ def create_key():
 
     action = 'key_create'
 
-    return _call(action)
+    return call(action)
 
 
 def expand_key(key):
@@ -41,4 +41,4 @@ def expand_key(key):
 
     action = 'key_expand'
 
-    return _call(action, key)
+    return call(action, key)

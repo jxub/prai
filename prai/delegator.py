@@ -1,4 +1,4 @@
-from .base import _call
+from .base import call
 
 
 def get_delegators(account):
@@ -13,7 +13,7 @@ def get_delegators(account):
 
     action = "delegators"
 
-    return _call(action, account=account)
+    return call(action, account=account)
 
 
 def get_delegator_count(account):
@@ -28,4 +28,4 @@ def get_delegator_count(account):
 
     action = "delegators_count"
 
-    return _call(action, account=account)
+    return call(action, account=account)

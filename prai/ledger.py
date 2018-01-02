@@ -1,4 +1,4 @@
-from .base import _call
+from .base import call
 
 
 def get_ledger(account, count=1, representative=False, weight=False,
@@ -26,6 +26,6 @@ def get_ledger(account, count=1, representative=False, weight=False,
 
     action = 'ledger'
 
-    return _call(action, account=account, count=count,
+    return call(action, account=account, count=count,
                  representative=representative, weight=weight,
                  pending=pending, sorting=sorting)

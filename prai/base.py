@@ -99,7 +99,7 @@ class Resource:
         return resp_dict
 
 
-def _call(action, **kwargs):
+def call(action, **kwargs):
     """
     Call the rai node without subclassing Resource for things like delegators, frontiers etc.
 
