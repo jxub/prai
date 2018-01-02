@@ -1,16 +1,17 @@
 import json
 import requests
 
-from peers import retrieve_online_peers
+from .base import retrieve_online_peers
+
 
 def bootstrap(address='127.0.0.1', port=7076):
     """
     Initialize bootstrap to specific IP address and port
 
-    :param address: http address, defaults to localhost
+    :param address: (optional) http address, defaults to localhost
     :type address: str
-    :param port: defaults to 7076 if address specified,
-    which is the primary rai activity port
+    :param port: (optional) defaults to 7076 if address specified,
+        which is the primary rai activity port
     :type port: str or int
     :return: true if bootstrap was successful, false otherwise
     :rtype: bool
@@ -33,7 +34,6 @@ def bootstrap_any():
 
     return _bootstrap(action)
 
-from key import expand_key
 
 def _bootstrap(action, address, port):
     """
@@ -41,9 +41,9 @@ def _bootstrap(action, address, port):
 
     :param action: action to be done
     :type action: str
-    :param address: http address
+    :param address: (optional) http address
     :type address: str
-    :param port: http port
+    :param port: (optional) http port
     :type port: str or int
     :return: true if bootstrap was successful, false otherwise
     :rtype: bool
@@ -66,9 +66,8 @@ def _bootstrap(action, address, port):
         
     return True
 
+
 def _find_random_peers():
     # TOOD mske it work
     peers = retrieve_online_peers()
     return [peer.url for peer in peers]
-
-
