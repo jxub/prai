@@ -2,12 +2,18 @@
 class Resource:
 
     def __init__(self, node_uri):
+        """
+        :param node_uri: the uri of the Rai node
+        :type node_url: str
+        """
         self.node_uri = node_uri
 
     def __send(action, wallet=None, key=None, count=None, account=None, accounts=None,
                representative=None, block=None, source=None, destination=None, amount=None,
                threshold=None, _hash=None, weight=None, pending=None):
         """
+        Handles the call to the rai node.
+
         :param action: mandatory param of action type
         :type action: str
         :param count: (optional)
@@ -28,7 +34,6 @@ class Resource:
 
         # TODO: return a RaiResponse object instead of json
         """
-
         payload = []
         payload.append('''"action": "{}"'''.format(action))
         if wallet:
@@ -68,10 +73,20 @@ class Resource:
 
         data = "\{{}\}".format(', '.join(payload))
 
+        resp = self.__get_response_dict(data)
 
+        self.__make_response_object(resp)
 
-    def __get_dict(self, data):
+    def __make_response_object(self, resp):
         """
+        Returns a constructed RaiResponse object
+        """
+        pass
+
+    def __get_response_dict(self, data):
+        """
+        Sends the string payload and returns a parsed response from the rai node.
+
         :param data: data to post and parse
         :type data: str
         :returns: response dict
@@ -85,5 +100,15 @@ class Resource:
 
 
 def _call(action, **kwargs):
-    # TODO call api without subclassing Resource for things like delegators, frontiers etc.
+    """
+    Call the rai node without subclassing Resource for things like delegators, frontiers etc.
+
+    :param action: mandatory param of action type
+    :type action: str
+    """
     return Resource.__send(action, **kwargs)
+
+
+def retrieve_online_peers():
+    # TODO
+    pass
