@@ -143,6 +143,9 @@ class Wallet(Resource):
     def accounts_balances(self, accounts):
         """
         Returns how many RAW is owned and how many have not yet been received by accounts list.
+
+        :param accounts: list of one or many accounts
+        :type accounts: list
         """
         action = "accounts_balances"
 
@@ -152,7 +155,24 @@ class Wallet(Resource):
         """
         Creates new accounts, insert next deterministic keys in wallet up to count.
         Disables work generation after creating account if work is set to false.
+
+        :param count: (optional) number of accounts to create, 1 default
+        :type count: int
         """
         action = "accounts_create"
 
         return self.__send(action, wallet=self.id, count=count, work=work)
+
+    def account_create(self, work=True):
+        """
+        Wrapper for creating a single account
+        """
+        return self.accounts_create(count=1, work=work)
+
+    def account_balance(self, account):
+        """
+        Wrapper for querying  a single account
+        :param account: account to query
+        :type account: str
+        """
+        return self.accounts_balances([account])
